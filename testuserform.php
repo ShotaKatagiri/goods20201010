@@ -1,35 +1,39 @@
 <?php
 
-$stoneMonth = [
-    1    => 'ガーネット',
-    2    => 'アメジスト',
-    3    => 'アクアマリン',
-    4    => 'ダイヤモンド',
-    5    => 'エメラルド',
-    6    => 'パール',
-    7    => 'ルビー',
-    8    => 'ペリドット',
-    9    => 'サファイア',
-    10   => 'オパール',
-    11   => 'トパーズ',
-    12   => 'ターコイズ',
+// $stoneMonth = [
+//     1    => 'ガーネット',
+//     2    => 'アメジスト',
+//     3    => 'アクアマリン',
+//     4    => 'ダイヤモンド',
+//     5    => 'エメラルド',
+//     6    => 'パール',
+//     7    => 'ルビー',
+//     8    => 'ペリドット',
+//     9    => 'サファイア',
+//     10   => 'オパール',
+//     11   => 'トパーズ',
+//     12   => 'ターコイズ',
 
-];
-if (!empty($_POST)) {
-    $count1 = $_POST['count1'];
-    $count2 = $_POST['count2'];
-    $total1 = 980 * $count1;
-    $total2 = 980 * $count2;
+// ];
+// if (!empty($_POST)) {
+//     $count1 = $_POST['count1'];
+//     $count2 = $_POST['count2'];
+//     $total1 = 980 * $count1;
+//     $total2 = 980 * $count2;
 
-    $month = $_POST['month'];
-} else {
-    $count1 = '';
-    $count2 = '';
-    $month = '';
-    $stone = '';
-}
+//     $month = $_POST['month'];
+// } else {
+//     $count1 = '';
+//     $count2 = '';
+//     $month = '';
+//     $stone = '';
+// }
+$total = 0;
 
-
+for ($i = 40;$i <=120; $i +=2){
+ $total += $i;
+};
+ echo $total;
 
 ?>
 
@@ -59,7 +63,7 @@ if (!empty($_POST)) {
 </head>
 
 <body>
-
+<!--
     <form action="" method="post">
         <table>
             <tr>
@@ -99,7 +103,7 @@ if (!empty($_POST)) {
         <option value="12">12</option>
     </select>
         <p><input type="submit" value="送信"></p>
-    </form>
+    </form> -->
 </body>
 
 </html>
