@@ -30,11 +30,19 @@
 // }
 $total = 0;
 
-for ($i = 40;$i <=120; $i +=2){
- $total += $i;
+for ($i = 40; $i <= 120; $i += 2) {
+    $total += $i;
 };
- echo $total;
+echo $total;
 
+
+$memberList = [
+    array('name' => '太郎', 'age' => 32, 'point' => 320),
+    array('name' => '次郎', 'age' => 21, 'point' => 180),
+    array('name' => '三郎', 'age' => 30, 'point' => 240),
+    array('name' => '四郎', 'age' => 28, 'point' => 80),
+    array('name' => '五郎', 'age' => 24, 'point' => 480)
+]
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +71,36 @@ for ($i = 40;$i <=120; $i +=2){
 </head>
 
 <body>
-<!--
+    <table>
+        <tr>
+            <th>お名前</th>
+            <th>ご年齢</th>
+            <th>ポイント</th>
+        </tr>
+        <?php for ($i = 0; $i < count($memberList); $i++) : ?>
+            <tr>
+                <td><?= $memberList[$i]['name'] ?></td>
+                <td><?= $memberList[$i]['age'] ?></td>
+                <td><?= $memberList[$i]['point'] ?></td>
+            </tr>
+
+        <?php endfor; ?>
+
+        <tr>
+            <th>お名前</th>
+            <th>ご年齢</th>
+            <th>ポイント</th>
+        </tr>
+        <?php foreach ($memberList as $member) : ?>
+            <tr>
+                <td><?=$member['name']?></td>
+                <td><?=$member['age']?></td>
+                <td><?=$member['point']?></td>
+            </tr>
+
+        <?php endforeach ?>
+    </table>
+    <!--
     <form action="" method="post">
         <table>
             <tr>
@@ -86,7 +123,7 @@ for ($i = 40;$i <=120; $i +=2){
             </tr>
         </table>
     <h2>誕生日月</h2>
-    <p><?= $month ?>月の誕生日石は<?=$stoneMonth[$month]?></p>
+    <p><?= $month ?>月の誕生日石は<?= $stoneMonth[$month] ?></p>
 
     <select name="month" id="">
         <option value="1">1</option>
