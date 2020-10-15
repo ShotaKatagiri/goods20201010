@@ -28,21 +28,109 @@
 //     $month = '';
 //     $stone = '';
 // }
-$total = 0;
+// $total = 0;
 
-for ($i = 40; $i <= 120; $i += 2) {
-    $total += $i;
-};
-echo $total;
+// for ($i = 40; $i <= 120; $i += 2) {
+//     $total += $i;
+// };
+// echo $total;
 
 
-$memberList = [
-    array('name' => '太郎', 'age' => 32, 'point' => 320),
-    array('name' => '次郎', 'age' => 21, 'point' => 180),
-    array('name' => '三郎', 'age' => 30, 'point' => 240),
-    array('name' => '四郎', 'age' => 28, 'point' => 80),
-    array('name' => '五郎', 'age' => 24, 'point' => 480)
-]
+// $memberList = [
+//     array('name' => '太郎', 'age' => 32, 'point' => 320),
+//     array('name' => '次郎', 'age' => 21, 'point' => 180),
+//     array('name' => '三郎', 'age' => 30, 'point' => 240),
+//     array('name' => '四郎', 'age' => 28, 'point' => 80),
+//     array('name' => '五郎', 'age' => 24, 'point' => 480)
+// ]
+
+$numArr = [
+    [
+        30,
+        65,
+        72,
+        47,
+        63,
+        96,
+        72,
+    ],
+    [
+        35,
+        57,
+        67,
+        23,
+        14,
+        56,
+        61,
+    ],
+
+
+    [
+        46,
+        16,
+        27,
+        58,
+        84,
+        34,
+        20,
+    ],
+
+
+
+    [
+        84,
+        27,
+        40,
+        18,
+        92,
+        46,
+        21,
+    ],
+
+    [
+        14,
+        74,
+        54,
+        2,
+        85,
+        35,
+        66,
+    ],
+
+];
+
+
+
+
+
+
+
+
+
+
+if (!empty($_POST)) {
+    $num = $_POST['num'];
+    $arr = $_POST['arr'];
+    $total = 0;
+    if (!isset($num)) {
+        $result = "数値を入力してください。";
+    }
+    if ($num < 0 && $num > 100) {
+        $result = "数値の入力が正しくありません。";
+    }else{
+        for($i = 0; $i < count($numArr[$arr]); $i++){
+            $total += $numArr[$arr][$i];
+        };
+        $result = $total * $num;
+    }
+} else {
+    $num = '';
+    $arr = '';
+    $result = '';
+    $result = 0;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,80 +155,27 @@ $memberList = [
             background-color: #dddddd;
         }
     </style>
-    <title>Document</title>
+    <title>合計値計算</title>
+
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>お名前</th>
-            <th>ご年齢</th>
-            <th>ポイント</th>
-        </tr>
-        <?php for ($i = 0; $i < count($memberList); $i++) : ?>
-            <tr>
-                <td><?= $memberList[$i]['name'] ?></td>
-                <td><?= $memberList[$i]['age'] ?></td>
-                <td><?= $memberList[$i]['point'] ?></td>
-            </tr>
-
-        <?php endfor; ?>
-
-        <tr>
-            <th>お名前</th>
-            <th>ご年齢</th>
-            <th>ポイント</th>
-        </tr>
-        <?php foreach ($memberList as $member) : ?>
-            <tr>
-                <td><?=$member['name']?></td>
-                <td><?=$member['age']?></td>
-                <td><?=$member['point']?></td>
-            </tr>
-
-        <?php endforeach ?>
-    </table>
-    <!--
     <form action="" method="post">
-        <table>
-            <tr>
-                <th>商品名</th>
-                <th>単価</th>
-                <th>数量</th>
-                <th>小計</th>
-            </tr>
-            <tr>
-                <td>和風レターセット</td>
-                <td>980円</td>
-                <td><input type="text" name="count1" size="2"></td>
-                <td><?= $total1 ?></td>
-            </tr>
-            <tr>
-                <td>毛筆ペン（細字）</td>
-                <td>980円</td>
-                <td><input type="text" name="count2" size="2"></td>
-                <td><?= $total2 ?></td>
-            </tr>
-        </table>
-    <h2>誕生日月</h2>
-    <p><?= $month ?>月の誕生日石は<?= $stoneMonth[$month] ?></p>
 
-    <select name="month" id="">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-    </select>
-        <p><input type="submit" value="送信"></p>
-    </form> -->
+        <h1>合計値計算:</h1>
+        <select name="arr" id="">
+            <option value="0">配列1</option>
+            <option value="1">配列2</option>
+            <option value="2">配列3</option>
+            <option value="3">配列4</option>
+            <option value="4">配列5</option>
+        </select>
+        <h2>掛ける数値:</h2>
+        <input type="text" name="num" size="2">
+
+        <p><input type="submit" value="計算"></p>
+    </form>
+    <?= $result ?>
 </body>
 
 </html>
